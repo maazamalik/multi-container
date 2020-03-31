@@ -3,22 +3,22 @@ services:
   - docker
 
 before_install:
-  - docker build -t maaz/multi-react-test -f ./client/Dockerfile.dev ./client
+  - docker build -t maazmalik/multi-react-test -f ./client/Dockerfile.dev ./client
 
 script: 
-  - docker run -e CI=true maaz/multi-react-test npm test
+  - docker run -e CI=true maazmalik/multi-react-test npm test
 
 after_success:
-  - docker build -t maaz/multi-client ./client
-  - docker build -t maaz/multi-nginx ./nginx
-  - docker build -t maaz/multi-server ./server
-  - docker build -t maaz/multi -worker ./worker
+  - docker build -t maazmalik/multi-client ./client
+  - docker build -t maazmalik/multi-nginx ./nginx
+  - docker build -t maazmalik/multi-server ./server
+  - docker build -t maazmalik/multi -worker ./worker
   
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
 
-  - docker push maaz/multi-client
-  - docker push maaz/multi-nginx
-  - docker push maaz/multi-server
-  - docker push maaz/multi-worker
+  - docker push maazmalik/multi-client
+  - docker push maazmalik/multi-nginx
+  - docker push maazmalik/multi-server
+  - docker push maazmalik/multi-worker
 
     
