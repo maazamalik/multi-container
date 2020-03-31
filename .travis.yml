@@ -12,7 +12,7 @@ after_success:
   - docker build -t maazmalik/multi-client ./client
   - docker build -t maazmalik/multi-nginx ./nginx
   - docker build -t maazmalik/multi-server ./server
-  - docker build -t maazmalik/multi -worker ./worker
+  - docker build -t maazmalik/multi-worker ./worker
   
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
 
