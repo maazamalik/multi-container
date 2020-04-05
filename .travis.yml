@@ -21,4 +21,14 @@ after_success:
   - docker push maazmalik/multi-server
   - docker push maazmalik/multi-worker
 
-    
+deploy:
+  - provider: elasticbeanstalk
+  - region: us-east-2
+  - app: Docker-multicontainer  
+  - env: DockerMulticontainer-env
+  - bucket_name: elasticbeanstalk-us-east-2-265430714165
+  - bucket_path: docker_multi
+    on:
+      branch: master
+    access_key_id: $AWS_ACCESS_KEY
+    secret_access_key: $AWS_SECRET_KEY
